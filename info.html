@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap 4.6 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+
+  <title>Bootstrap Sidebar</title>
+
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background: linear-gradient(180deg, #1E1B4B, #312E81);
+      color: #ffffff;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    #sidebar.active {
+      left: 0;
+    }
+
+    #sidebar a {
+      color: white;
+      padding: 12px 20px;
+      display: block;
+      text-decoration: none;
+    }
+
+    #sidebar a:hover {
+      background: rgba(221, 63, 15, 0.37);
+    }
+
+    /* Content */
+    #content {
+      transition: 0.3s;
+      padding: 20px;
+    }
+
+    #content.active {
+      margin-left: 250px;
+    }
+
+    .navbar {
+      width: 100% !important;
+    }
+
+    body {
+      background: #f4f6fb;
+      font-family: Arial, sans-serif;
+    }
+
+    .welcome-card {
+      width: 90%;
+      max-width: 900px;
+      height: 180px;
+      margin: 50px auto;
+      padding: 25px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #9b6df3, #8a5cf6);
+      color: white;
+    }
+
+    .content .date {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .content h2 {
+      margin: 10px 0 5px;
+      font-size: 26px;
+    }
+
+    .sub-text {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    .image img {
+      height: 150px;
+    }
+
+    body {
+      /* background: linear-gradient(135deg, #6A7CFF, #9F7AEA); */
+      /* background: linear-gradient(135deg, #4F46E5, #E5E7EB); */
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      /* background: linear-gradient(135deg, #1E3A8A, #6D28D9); */
+
+
+
+    }
+
+    .hh {
+      height: 20em !important;
+      position: relative;
+      left: 12em;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    /* focus effect */
+    .admin-input:focus {
+      border-color: #E5767D;
+      box-shadow: 0 0 6px rgba(229, 118, 125, 0.5);
+    }
+
+    /* disabled style (admin नाही तेव्हा) */
+    .admin-input:disabled {
+      background-color: #f2f2f2;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    .admin-input {
+      width: 100%;
+      max-width: 320px;
+      padding: 12px 16px;
+      font-size: 15px;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    /* focus effect */
+    .admin-input:focus {
+      border-color: #E5767D;
+      box-shadow: 0 0 8px rgba(229, 118, 125, 0.45);
+    }
+
+    /* disabled look */
+    .admin-input:disabled {
+      background-color: #f4f4f4;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    .ho:hover {
+      border: 2px solid purple;
+    }
+
+    .ho {
+      background-color: #bb9dff !important;
+      color: purple;
+    }
+
+    .ddd {
+      position: sticky;
+      top: 0px;
+      z-index: 120;
+    }
+
+    .fy-card {
+      max-width: 500px;
+      padding: 25px 30px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #E9D5FF, #FBCFE8);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      color: #3B0764;
+      animation: fadeUp 0.6s ease;
+    }
+
+    .fy-card .h3 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #5B21B6;
+    }
+
+    .tech-box {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 15px 20px;
+      border-radius: 10px;
+    }
+
+    .tech-box .lead {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #6D28D9;
+    }
+
+    .tech-box ol {
+      padding-left: 20px;
+    }
+
+    .tech-box li {
+      font-size: 16px;
+      padding: 6px 0;
+      font-weight: 500;
+    }
+
+    /* Small animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sy-card {
+      max-width: 520px;
+      padding: 26px 32px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #DDD6FE, #F5D0FE);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
+      color: #2E1065;
+      animation: fadeUp 0.6s ease;
+    }
+
+    .sy-card .h3 {
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #6D28D9;
+    }
+
+    .sy-card .tech-box {
+      background: rgba(255, 255, 255, 0.55);
+      padding: 16px 22px;
+      border-radius: 12px;
+    }
+
+    .sy-card .lead {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #7C3AED;
+    }
+
+    .sy-card ol {
+      padding-left: 22px;
+    }
+
+    .sy-card li {
+      font-size: 16px;
+      padding: 7px 0;
+      font-weight: 600;
+    }
+
+    .ty-card {
+      max-width: 540px;
+      padding: 28px 34px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #C7D2FE, #EDE9FE);
+      box-shadow: 0 16px 40px rgba(189, 65, 65, 0.3);
+      color: #1E1B4B;
+      animation: fadeUp 0.6s ease;
+    }
+
+    .ty-card .h3 {
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #4338CA;
+    }
+
+    .ty-card .tech-box {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 18px 24px;
+      border-radius: 14px;
+    }
+
+    .ty-card .lead {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #4F46E5;
+    }
+
+    .ty-card ol {
+      padding-left: 24px;
+    }
+
+    .ty-card li {
+      font-size: 16.5px;
+      padding: 8px 0;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-dark ddd bg-dark">
+    <button class="btn btn-outline-light" onclick="toggleSidebar()">
+      ☰ Menu
+    </button>
+    <button onclick="checkAdmin()" type="button" class="btn btn-outline-secondary">Admin</button>
+  </nav>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="ok">
+    <div class="p-3 border-bottom text-white">
+      Sidebar
+      <btton class="btn btn-sm btn-danger float-right" onclick="toggleSidebar()">
+        Close
+        </button>
+    </div>
+    <a href="#" onclick="goHome()">Dashboard</a>
+    <a href="#" onclick="goPayment()">Payment History</a>
+    <a href="#" onclick="go()">Courses</a>
+
+    <a href="#" onclick="gop()">Notice</a>
+
+    <button type="button" class="btn btn-secondary btn-sm mx-lg-3 my-5">
+      Log_out
+    </button>
+  </div>
+
+  <!-- Page Content -->
+  <div id="content" class="container-fluid ok">
+    <div class="row">
+      <div class="col-lg-6">
+        <!-- <p id="time" class="" style="font-size: 20px"></p>
+          <h3 id="name"></h3>
+          <p class="lead">Always stay updated in your student portal</p> -->
+        <div class="welcome-card">
+          <div class="content">
+            <div class="row">
+              <div class="col-ld-6 ml-lg-5">
+                <p class="date" id="time" style="font-size: 20px"></p>
+                <h2 id="name"></h2>
+                <p class="sub-text">
+                  Always stay updated in your student portal
+                </p>
+              </div>
+              <div class="col-ld-6">
+                <div class="image d-none d-lg-block">
+                  <img
+                    src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png"
+                    alt="student illustration" class="ml-lg-5" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="container" id="no">
+          <img src="https://i.pinimg.com/736x/ac/a2/c3/aca2c38ea972f0d1c610eef8d6f3f663.jpg"
+            class="img-thumbnail hh d-lg-block d-none" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-lg-12 ">
+          <div class="row">
+            <div class="col-lg-3 ">
+              <div class="shadow-lg p-3 mb-5 bg-white rounded text-center ho">
+                <p class="lead">Total fees (per Year)</p>
+                <p class="h3">₹105000</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="shadow-lg p-3 mb-5 bg-white rounded ho ">
+                <p class="lead">Your pending fees are </p>
+                <p class="h3" id="fee"></p>
+                <div id="ad" style="display: none;">
+                  <input type="text" id="myInput" class="admin-input" placeholder="Only admin can type">
+
+                  <button onclick="add()" class="btn-success">Add</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="shadow-lg p-3 mb-5 bg-white rounded ho">
+                <p class="lead">Your Exam Fess are </p>
+                <p class="h3" id="et">₹18000</p>
+                <p class="h3" id="fees"></p>
+                <div id="add" style="display: none;">
+                  <input type="text" id="my" class="admin-input" placeholder="Only admin can type">
+
+                  <button onclick="adds()" class="btn-success">Add</button>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-lg-3"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <h4>Enroll Courses</h4>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <div id="fy" class="fy-card" style="display: none;">
+              <p class="h3">I Am First Year Student</p>
+
+              <div class="tech-box">
+                <p class="lead">Your technologies are :</p>
+                <ol>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="sy" class="sy-card" style="display: none;">
+              <p class="h3">I Am Second Year Student</p>
+
+              <div class="tech-box">
+                <p class="lead">Your technologies are :</p>
+                <ol>
+                  <li>React</li>
+                  <li>OOP's</li>
+                  <li>Node.js</li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="ty" class="ty-card" style="display: none;">
+              <p class="h3">I Am Third Year Student</p>
+
+              <div class="tech-box">
+                <p class="lead">My technologies are :</p>
+                <ol>
+                  <li>Angular</li>
+                  <li>Real Project Work</li>
+                  <li>Testing (Optional)</li>
+                </ol>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <div id="Fy" class="fy-card" style="display: none;">
+              <p class="h3">Main focus on Communication Skill </p>
+
+              <div class="tech-box">
+                <p class="lead">Your Languages are :</p>
+                <ol>
+                  <li>English</li>
+                  <li>Advance English</li>
+                  <li>Pocture</li>
+                </ol>
+              </div>
+            </div>
+
+
+            <div id="Sy" class="sy-card" style="display: none;">
+              <p class="h3">Main focus on LeaderShip Qualities</p>
+
+              <div class="tech-box">
+                <p class="lead">Your Filds are :</p>
+                <ol>
+                  <li>B.A</li>
+                  <li>Q.A</li>
+
+                </ol>
+              </div>
+            </div>
+
+
+            <div id="Ty" class="ty-card" style="display: none;">
+              <p class="h3">Main focus on Handel Real world Project</p>
+
+              <!-- <div class="tech-box">
+                <p class="lead">My technologies are :</p>
+                <ol>
+                  <li>Angular</li>
+                  <li>Real Project Work</li>
+                  <li>Testing (Optional)</li>
+                </ol>
+              </div> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+   
+        <div class="row">
+          <div class="col-lg-8">
+            
+            <p class="h3" id="First"></p>
+            <p class="lead" id="Second"></p>
+            <p class="lead" id="Third"></p>
+          </div>
+         
+        </div>
+      
+    </div>
+  </div>
+  <!-- JS -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById("no").style.display = "block";
+      let e = document.getElementById("sidebar").classList.toggle("active");
+      document.getElementById("content").classList.toggle("active");
+      if (e) {
+        document.getElementById("no").style.display = 'none'
+      }
+    }
+
+    let users = JSON.parse(localStorage.getItem("student")) || [];
+
+    // Username + Password match
+    let nav = users.find((e) => e.name);
+    let dt = new Date();
+    let real = dt.getDate();
+    let mon = dt.getMonth() + 1;
+    let year = dt.getFullYear();
+    document.getElementById("name").innerHTML = `Welcome back ${nav.name} `;
+    if (nav) {
+      if (mon === 1) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 2) {
+        document.getElementById("time").innerHTML = `  Feb ${real}, ${year}`;
+      } else if (mon === 3) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 4) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 5) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 6) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 7) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 8) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 9) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 10) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 11) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else if (mon === 12) {
+        document.getElementById("time").innerHTML =
+          `${real} : ${mon} : ${year}`;
+      } else {
+        console.log("Invalid month number");
+      }
+    }
+
+    function goHome() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+ function goPayment(){
+      window.scrollTo({
+        top: 200,
+        behavior: "smooth"
+      });
+    }
+ function go() {
+      window.scrollTo({
+        top: 999,
+        behavior: "smooth"
+      });
+    }
+     function gop() {
+      window.scrollTo({
+        top: 99999,
+        behavior: "smooth"
+      });
+    }
+    function checkAdmin() {
+      let ob = {
+        user: "Admin",
+        pass: "admin@1234",
+      }
+      let a = prompt("Enter menter username");
+      let b = (prompt("Enter menter password"))
+      if (a === ob.user && b === ob.pass) {
+        document.getElementById("ad").style.display = "block"
+        document.getElementById("add").style.display = "block"
+      }
+      else {
+        alert("Sorry do don't have access of main pannel  ")
+      }
+
+    }
+
+
+    //  Page reload झाला तरी value set राहील
+    window.onload = function () {
+      let data = JSON.parse(localStorage.getItem("userr"));
+      if (data && data.ammount) {
+        document.getElementById("fee").innerHTML = `₹${data.ammount}`;
+        document.getElementById("ad").style.display = "none";
+      }
+    };
+
+    function add() {
+      let f = document.getElementById("myInput").value;
+
+      if (f === "") {
+        alert("enter ammount");
+      } else {
+        // 🔹 जुनी value घ्या (असेल तर)
+        let oldData = JSON.parse(localStorage.getItem("userr")) || { ammount: 0 };
+
+        let userr = {
+          ammount: Number(f),
+        };
+
+        localStorage.setItem("userr", JSON.stringify(userr));
+
+        let data = JSON.parse(localStorage.getItem("userr"));
+        console.log(data.ammount);
+
+        document.getElementById("fee").innerHTML = `₹${data.ammount}`;
+        document.getElementById("ad").style.display = "none";
+      }
+    }
+
+    function adds() {
+      let f = document.getElementById("my").value
+      if (f === "") { alert("enter ammount") }
+      else {
+        document.getElementById("add").style.display = "none"
+        document.getElementById("et").innerHTML = `₹${f}`
+        let z = document.getElementById("add").style.display = "none"
+      }
+    }
+
+    let course = JSON.parse(localStorage.getItem("student")) || [];
+
+    // Username + Password match
+    let user = users.find(
+      (e) => e.course
+    );
+
+    if (user.course === "FY") {
+      document.getElementById("fy").style.display = "block"
+      document.getElementById("Fy").style.display = "block"
+      document.getElementById("First").innerHTML = `Notic : * Hi ${nav.name} Complete your Present Technology *`
+    }
+    else if (user.course === "SY") {
+      document.getElementById("sy").style.display = "block"
+      document.getElementById("Sy").style.display = "block"
+      document.getElementById("First").innerHTML = `<span style = "color:red  ">Notic : </span>* Hi ${nav.name} you are devloping your Business Analyzing *`
+    }
+    else if (user.course === "TY") {
+      document.getElementById("ty").style.display = "block"
+      document.getElementById("Ty").style.display = "block"
+      document.getElementById("First").innerHTML = `Notic : * Hi ${nav.name} You are in last year So, Stay focus *`
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
