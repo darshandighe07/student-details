@@ -5,6 +5,8 @@ let data = JSON.parse(localStorage.getItem("student")) || [];
 function login() {
   document.getElementById("login").style.display = "block";
   document.getElementById("zz").style.display = "none";
+  document.getElementById("ldiv").style.marginTop="0em";
+     document.getElementById("ll").style.marginTop="9em";
 }
 
 // LOGIN
@@ -36,6 +38,8 @@ function f() {
 function sin() {
   document.getElementById("zz").style.display = "block";
   document.getElementById("login").style.display = "none";
+   document.getElementById("ldiv").style.marginTop="9em";
+   document.getElementById("ll").style.marginTop="0em";
 }
 
 // SIGNUP
@@ -55,3 +59,4 @@ function fd() {
   alert("Registration successful ✔");
   window.location.href = "info.html";
 }
+
