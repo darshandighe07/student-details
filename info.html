@@ -325,7 +325,7 @@
 
     <a href="#" onclick="gop()">Notice</a>
 
-    <button type="button" class="btn btn-secondary btn-sm mx-lg-3 my-5">
+    <button onclick="lo()" type="button" class="btn btn-secondary btn-sm mx-lg-3 my-5">
       Log_out
     </button>
   </div>
@@ -512,6 +512,21 @@
   </div>
   <!-- JS -->
   <script>
+   <script>
+  function lo() {
+    let ans = confirm("Do you really want to logout?");
+
+    if (ans) {
+      // logout action
+      // example: login page ला redirect
+      window.location.href = "index.html";
+    } else {
+      // cancel केलं तर काहीच होणार नाही
+      return false;
+    }
+  }
+</script>
+
     function toggleSidebar() {
       document.getElementById("no").style.display = "block";
       let e = document.getElementById("sidebar").classList.toggle("active");
@@ -683,5 +698,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 </html>
